@@ -1,4 +1,4 @@
-# Bend Events Skill
+# Bend Monthly Events Skill
 
 A Codex skill for researching Bend, Oregon events in parallel and producing a portable HTML report. It covers city event listings, independent venue calendars, breweries, and nearby towns.
 
@@ -9,9 +9,9 @@ Each source has its own worker assignment. A coordinator runs those assignments 
 Python 3.10 or newer is required for the report renderer. Research requires an assistant with web access; parallel research also requires agent delegation tools. No API keys or Python packages are needed for HTML generation.
 
 ```bash
-git clone https://github.com/srogerf/bend-events-skill.git
+git clone https://github.com/srogerf/bend-monthly-events.git
 mkdir -p ~/.codex/skills
-cp -R bend-events-skill/skills/bend-weekend-event-list ~/.codex/skills/
+cp -R bend-monthly-events/skills/bend-weekend-event-list ~/.codex/skills/
 ```
 
 If you already have a skill with that name, compare or back up the existing directory before replacing it. Restart or start a new Codex session if needed to discover the installed skill.
