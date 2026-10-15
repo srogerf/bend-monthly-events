@@ -5,13 +5,15 @@ description: Research Bend, Oregon events for a requested date range using paral
 
 # Bend event research
 
+If the parent explicitly assigned you one source as a worker, follow [agents/source-researcher.md](agents/source-researcher.md) and return that result; do not start the coordinator workflow or spawn more agents.
+
 Resolve the requested dates explicitly in `America/Los_Angeles`. When no period is specified, research the current calendar month; a weekend request means the requested Friday through Sunday. Support other date ranges. Refresh event details every run; prior reports are candidates, not evidence of current availability.
 
 ## Parallel research
 
-Read [references/sources.json](references/sources.json) for the discovery and venue sources, and [references/source-agent.md](references/source-agent.md) for the reusable worker instructions. These are source assignments, not persistent background services.
+Read [references/sources.json](references/sources.json) for source assignments, [agents/coordinator.md](agents/coordinator.md) for the worker lifecycle, and [agents/source-researcher.md](agents/source-researcher.md) for the worker role and return contract.
 
-Act as coordinator. Assign one source per worker task with the same dates and timezone. Use the available agent capacity, reserving a slot for coordination, and queue remaining sources in batches. Do not assume a fixed concurrency limit. If delegation is unavailable, do the same assignments sequentially and disclose that.
+Act as coordinator and use the host's delegation tools to spawn fresh, temporary subagents for this run, one source per worker instance. Run them in parallel within available capacity, reserving room for coordination, and queue remaining sources. Collect each result and close/release its worker where supported. Do not repurpose earlier agents across sources or runs. Record actual agent IDs and source outcomes in a local run manifest. If host limitations prevent this lifecycle, report the limitation; never silently substitute sequential research or claim agents ran when they did not.
 
 Each worker returns event records and a source coverage record. Workers independently check venue calendars, including breweries; city aggregators have missed those events before. Use aggregators for discovery and direct organizers for verification. Calendar URLs are starting points: follow current official links when paths change.
 
